@@ -8,8 +8,7 @@ var appShellFilesToCache = [
   './styles.css',
   './runtime.js',
   './favicon.ico',
-  './assets/icons/icon-512x512.png',
-  'https://developers.google.com/web/tools/workbox/images/workbox-icon192x192.png'
+  './assets/icons/icon-512x512.png'
 ]
 
 var dataCacheName = 'pwa-for-prod-data-v' + version

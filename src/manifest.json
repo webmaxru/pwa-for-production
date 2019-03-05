@@ -1,6 +1,6 @@
 {
-  "name": "Angular PWA Workshop",
-  "short_name": "Angular PWA",
+  "name": "PWA For Production",
+  "short_name": "PWA For Prod",
   "theme_color": "#5921c8",
   "background_color": "#fafafa",
   "display": "standalone",

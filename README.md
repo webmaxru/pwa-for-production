@@ -36,17 +36,17 @@ The output should be at least `6.x.x`
 ```bash
 ng serve
 ```
-2. Open [http://localhost:4200/](http://localhost:4200/). You should see the page with `Angular PWA` header.
+2. Open [http://localhost:4200/](http://localhost:4200/). You should see the page with `PWA For Production` header.
 3. "Ctrl-C" to stop the app.
 
 ## Creating a production build and serving it via external web server
 ```bash
 npm run build-pwa-bundle
 ```
-The `dist/angular-pwa` folder should be created.
+The `dist/pwa-for-production` folder should be created.
 
 - If you use `serve`: Run `serve` and open `http://127.0.0.1:5000` in your browser.
 
-You should see the page with `Angular PWA` header.
+You should see the page with `PWA For Production` header.
 
 ## We are ready to start the workshop! Follow the trainer instructions.
