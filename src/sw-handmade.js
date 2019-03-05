@@ -8,14 +8,15 @@ var appShellFilesToCache = [
   './styles.css',
   './runtime.js',
   './favicon.ico',
-  './assets/icons/icon-512x512.png',
-  'https://developers.google.com/web/tools/workbox/images/workbox-icon192x192.png'
+  './assets/icons/icon-512x512.png'
 ]
 
 var dataCacheName = 'pwa-for-prod-data-v' + version
 
 self.addEventListener('install', (event) => {
+
   self.skipWaiting()
+
   console.log('[Service Worker]: Installed')
 
   event.waitUntil(
@@ -47,7 +48,6 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   console.log('[Service Worker]: Fetch')
 
-  // Match requests for data and handle them separately
   if (event.request.url.indexOf('timeline/') != -1) {
     event.respondWith(
 
@@ -85,11 +85,19 @@ self.addEventListener('fetch', (event) => {
 
     )
   } else {
-
-    // The old code for App Shell
     event.respondWith(
       caches.match(event.request).then((response) => {
-        return response || fetch(event.request)
+
+        if (response) {
+          console.log('[Service Worker]: returning ' + event.request.url + ' from cache')
+          return response
+        } else {
+          console.log('[Service Worker]: returning ' + event.request.url + ' from net')
+          return fetch(event.request)
+        }
+
+        // w/o debug info: return response || fetch(event.request)
+
       })
     )
   }

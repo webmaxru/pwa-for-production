@@ -1,4 +1,4 @@
 {
-  "rewrites": [{ "source": "/**", "destination": "/index.html" }],
+  "rewrites": [{ "source": "/cached-route", "destination": "/index.html" }],
   "public": "dist/pwa-for-production"
 }
