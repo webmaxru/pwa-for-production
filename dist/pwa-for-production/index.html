@@ -34,14 +34,27 @@
       Install PWA For Prod
     </button>
   <script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="main.js"></script></body>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker
-          .register('sw-handmade.js')
-          .then(registration => console.log(registration));
-      });
+  <script type="module">
+
+import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/4.3.0/workbox-window.prod.mjs';
+
+if ('serviceWorker' in navigator) {
+
+  const wb = new Workbox('sw-workbox.js');
+
+  wb.addEventListener('installed', event => {
+    if (event.isUpdate) {
+      if (confirm(`New content is available!. Click OK to refresh`)) {
+        window.location.reload();
+      }
+    } else {
+        alert(`The app is offline-ready`)
     }
+  });
+
+  wb.register();
+}
+
   </script>
 
   <script>
